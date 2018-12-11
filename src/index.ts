@@ -4,8 +4,12 @@ import HttpStatus from "http-status-codes";
 import * as ip from "ip";
 import { dummyLogger, Logger } from "ts-log";
 
-export type HandleIdentityVerificationFn = (verificationResult: IdentityVerificationResult) => Promise<void>;
-export type HandleDocumentVerificationFn = (verificationResult: DocumentVerificationResult) => Promise<void>;
+export type HandleIdentityVerificationFn = (
+  verificationResult: IdentityVerificationResult
+) => Promise<void>;
+export type HandleDocumentVerificationFn = (
+  verificationResult: DocumentVerificationResult
+) => Promise<void>;
 
 export interface JumioConfig {
   apiToken: string;
@@ -23,11 +27,13 @@ export interface JumioConfig {
 
 export enum Region {
   US = "US",
-  EU = "EU",
+  EU = "EU"
 }
 
 export type RegionApiUrlMap = { [key in keyof typeof Region]: string };
-export type RegionCallbackWhitelistMap = { [key in keyof typeof Region]: string[] };
+export type RegionCallbackWhitelistMap = {
+  [key in keyof typeof Region]: string[]
+};
 
 // https://github.com/Jumio/implementation-guides/blob/master/netverify/netverify-web-v4.md#supported-workflowid-values
 export enum WorkflowId {
@@ -36,7 +42,7 @@ export enum WorkflowId {
   ID_UPLOAD_ONLY = 102,
   ID_AND_IDENTITY_CAMERA_AND_UPLOAD = 200,
   ID_AND_IDENTITY_CAMERA_ONLY = 201,
-  ID_AND_IDENTITY_UPLOAD_ONLY = 202,
+  ID_AND_IDENTITY_UPLOAD_ONLY = 202
 }
 
 // https://github.com/Jumio/implementation-guides/blob/master/netverify/netverify-web-v4.md#supported-presets-values
@@ -81,7 +87,7 @@ export enum Locale {
   "tr" = "tr", //	Turkish
   "vl" = "vl", //	Vietnamese
   "zh_CN" = "zh_CN", // Simplified Chinese
-  "zh_HK" = "zh_HK", // Traditional Chinese
+  "zh_HK" = "zh_HK" // Traditional Chinese
 }
 
 // https://github.com/Jumio/implementation-guides/blob/master/netverify/netverify-web-v4.md#request-body
@@ -146,12 +152,12 @@ export enum IdentityVerificationStatus {
   ERROR_NOT_READABLE_ID = "ERROR_NOT_READABLE_ID",
 
   // no identification source was provided
-  NO_ID_UPLOADED = "NO_ID_UPLOADED",
+  NO_ID_UPLOADED = "NO_ID_UPLOADED"
 }
 
 export enum IdScanStatus {
   SUCCESS = "SUCCESS",
-  ERROR = "ERROR",
+  ERROR = "ERROR"
 }
 
 export enum IdScanSource {
@@ -177,19 +183,19 @@ export enum IdScanSource {
   API = "API",
 
   // performed on mobile sdk
-  SDK = "SDK",
+  SDK = "SDK"
 }
 
 export enum IdCheckStatus {
   OK = "OK",
-  NOT_AVAILABLE = "N/A",
+  NOT_AVAILABLE = "N/A"
 }
 
 export enum IdType {
   PASSPORT = "PASSPORT",
   DRIVING_LICENSE = "DRIVING_LICENSE",
   ID_CARD = "ID_CARD",
-  VISA = "VISA",
+  VISA = "VISA"
 }
 
 export enum IdSubType {
@@ -205,7 +211,7 @@ export enum IdSubType {
   VISA = "VISA",
   LEARNING_DRIVING_LICENSE = "LEARNING_DRIVING_LICENSE",
   E_PASSPORT = "E_PASSPORT",
-  UNKNOWN = "UNKNOWN",
+  UNKNOWN = "UNKNOWN"
 }
 
 export enum RejectReasonCode {
@@ -231,7 +237,7 @@ export enum RejectReasonCode {
   MISSING_SIGNATURE = 209,
   CAMERA_BLACK_WHITE = 210,
   DIFFERENT_PERSONS_SHOWN = 211,
-  MANUAL_REJECTION = 300,
+  MANUAL_REJECTION = 300
 }
 
 // must match the RejectReasonCode above
@@ -258,7 +264,7 @@ export enum RejectReasonDescription {
   MISSING_SIGNATURE = "MISSING_SIGNATURE",
   CAMERA_BLACK_WHITE = "CAMERA_BLACK_WHITE",
   DIFFERENT_PERSONS_SHOWN = "DIFFERENT_PERSONS_SHOWN",
-  MANUAL_REJECTION = "MANUAL_REJECTION",
+  MANUAL_REJECTION = "MANUAL_REJECTION"
 }
 
 export enum RejectDetailsCode {
@@ -279,7 +285,7 @@ export enum RejectDetailsCode {
   BAD_QUALITY = 2002,
   MISSING_PART_DOCUMENT = 2003,
   HIDDEN_PART_DOCUMENT = 2004,
-  DAMAGED_DOCUMENT = 2005,
+  DAMAGED_DOCUMENT = 2005
 }
 
 // must match the RejectDetailsCode above
@@ -301,7 +307,7 @@ export enum RejectDetailsDescription {
   BAD_QUALITY = "BAD_QUALITY",
   MISSING_PART_DOCUMENT = "MISSING_PART_DOCUMENT",
   HIDDEN_PART_DOCUMENT = "HIDDEN_PART_DOCUMENT",
-  DAMAGED_DOCUMENT = "DAMAGED_DOCUMENT",
+  DAMAGED_DOCUMENT = "DAMAGED_DOCUMENT"
 }
 
 export interface RejectReasonDetails {
@@ -356,13 +362,13 @@ export type Address = AddressUs | AddressEu | AddressRaw;
 
 export enum Gender {
   M = "M",
-  F = "F",
+  F = "F"
 }
 
 export enum Similarity {
   MATCH = "MATCH",
   NO_MATCH = "NO_MATCH",
-  NOT_POSSIBLE = "NOT_POSSIBLE",
+  NOT_POSSIBLE = "NOT_POSSIBLE"
 }
 
 export enum IdentityInvalidReason {
@@ -375,7 +381,7 @@ export enum IdentityInvalidReason {
   NO_FACE_PRESENT = "NO_FACE_PRESENT",
   FACE_NOT_FULLY_VISIBLE = "FACE_NOT_FULLY_VISIBLE",
   BAD_QUALITY = "BAD_QUALITY",
-  BLACK_AND_WHITE = "BLACK_AND_WHITE",
+  BLACK_AND_WHITE = "BLACK_AND_WHITE"
 }
 
 export interface IdentityVerificationBase {
@@ -393,7 +399,9 @@ export interface IdentityVerificationFailure extends IdentityVerificationBase {
   reason: IdentityInvalidReason;
 }
 
-export type IdentityVerificationInfo = IdentityVerificationSuccess | IdentityVerificationFailure;
+export type IdentityVerificationInfo =
+  | IdentityVerificationSuccess
+  | IdentityVerificationFailure;
 
 export enum CountryCode {
   AFG = "AFG", // Afghanistan
@@ -644,19 +652,19 @@ export enum CountryCode {
   ESH = "ESH", // Western Sahara
   YEM = "YEM", // Yemen
   ZMB = "ZMB", // Zambia
-  ZWE = "ZWE", // Zimbabwe
+  ZWE = "ZWE" // Zimbabwe
 }
 
 export enum DlCarPermission {
   YES = "YES",
   NO = "NO",
-  NOT_READABLE = "NOT_READABLE",
+  NOT_READABLE = "NOT_READABLE"
 }
 
 export enum DlCategory {
   B1 = "B1",
   B = "B",
-  BE = "BE",
+  BE = "BE"
 }
 
 export interface DlCategoryItem {
@@ -845,7 +853,8 @@ export interface VerificationResultDeniedFraud extends VerificationResultBase {
   firstAttemptDate: Date;
 }
 
-export interface VerificationResultErrorNotReadableId extends VerificationResultBase {
+export interface VerificationResultErrorNotReadableId
+  extends VerificationResultBase {
   // approved status
   verificationStatus: IdentityVerificationStatus.ERROR_NOT_READABLE_ID;
 
@@ -856,7 +865,8 @@ export interface VerificationResultErrorNotReadableId extends VerificationResult
   firstAttemptDate: Date;
 }
 
-export interface VerificationResultUnsupportedIdCountry extends VerificationResultBase {
+export interface VerificationResultUnsupportedIdCountry
+  extends VerificationResultBase {
   // approved status
   verificationStatus: IdentityVerificationStatus.DENIED_UNSUPPORTED_ID_COUNTRY;
 
@@ -864,7 +874,8 @@ export interface VerificationResultUnsupportedIdCountry extends VerificationResu
   firstAttemptDate: Date;
 }
 
-export interface VerificationResultUnsupportedIdType extends VerificationResultBase {
+export interface VerificationResultUnsupportedIdType
+  extends VerificationResultBase {
   // approved status
   verificationStatus: IdentityVerificationStatus.DENIED_UNSUPPORTED_ID_TYPE;
 
@@ -878,7 +889,9 @@ export type VerificationResultCombined = VerificationResultApproved &
   VerificationResultUnsupportedIdCountry &
   VerificationResultUnsupportedIdType;
 
-export type RawIdentityVerificationResult = { [key in keyof VerificationResultCombined]: any };
+export type RawIdentityVerificationResult = {
+  [key in keyof VerificationResultCombined]: any
+};
 
 export type IdentityVerificationResult =
   | VerificationResultApproved
@@ -929,7 +942,7 @@ export enum DocumentVerificationType {
   "USSS" = "USSS", // US social security card
   "CUSTOM" = "CUSTOM", // DOCUMENT
   "BS" = "BS", // Bank statement
-  "UB" = "UB", // Utility bill
+  "UB" = "UB" // Utility bill
 }
 
 export type DocumentTypeList = {
@@ -1057,13 +1070,13 @@ export interface DocumentVerificationResult {
 
 export enum DocumentVerificationTransactionStatus {
   DONE = "DONE",
-  FAILED = "FAILED",
+  FAILED = "FAILED"
 }
 
 export enum DocumentVerificationSource {
   DOC_UPLOAD = "DOC_UPLOAD", // document verification web
   DOC_API = "DOC_API", // document verification api
-  DOC_SDK = "DOC_SDK", // document verification mobile
+  DOC_SDK = "DOC_SDK" // document verification mobile
 }
 
 export interface DocumentVerificationTransactionInfo {
@@ -1093,7 +1106,7 @@ export enum DocumentVerificationDocumentStatus {
   NOT_AVAILABLE = "NOT_AVAILABLE",
   UPLOADED = "UPLOADED",
   EXTRACTED = "EXTRACTED",
-  DISCARDED = "DISCARDED",
+  DISCARDED = "DISCARDED"
 }
 
 export type ExtractedDocumentData = {
@@ -1145,22 +1158,22 @@ export interface Country {
 
 export const identityRegionApiUrlMap: RegionApiUrlMap = {
   [Region.US]: "https://netverify.com/api/v4",
-  [Region.EU]: "https://lon.netverify.com/api/v4",
+  [Region.EU]: "https://lon.netverify.com/api/v4"
 };
 
 export const documentRegionApiUrlMap: RegionApiUrlMap = {
   [Region.US]: "https://upload.netverify.com/api/netverify/v2",
-  [Region.EU]: "https://upload.lon.netverify.com/api/netverify/v2",
+  [Region.EU]: "https://upload.lon.netverify.com/api/netverify/v2"
 };
 
 export const identityRetrievalRegionApiUrlMap: RegionApiUrlMap = {
   [Region.US]: "https://netverify.com/recognition/v1/idscan",
-  [Region.EU]: "https://lon.netverify.com/recognition/v1/idscan",
+  [Region.EU]: "https://lon.netverify.com/recognition/v1/idscan"
 };
 
 export const documentRetrievalRegionApiUrlMap: RegionApiUrlMap = {
   [Region.US]: "https://retrieval.netverify.com/api/netverify/v2/documents",
-  [Region.EU]: "https://retrieval.lon.netverify.com/api/netverify/v2/documents",
+  [Region.EU]: "https://retrieval.lon.netverify.com/api/netverify/v2/documents"
 };
 
 export const regionCallbackWhitelistMap: RegionCallbackWhitelistMap = {
@@ -1174,7 +1187,7 @@ export const regionCallbackWhitelistMap: RegionCallbackWhitelistMap = {
     "104.130.61.196",
     "146.20.77.156",
     "184.106.91.66",
-    "184.106.91.67",
+    "184.106.91.67"
   ],
   [Region.EU]: [
     "34.253.41.236",
@@ -1186,111 +1199,111 @@ export const regionCallbackWhitelistMap: RegionCallbackWhitelistMap = {
     "162.13.228.132",
     "162.13.228.134",
     "162.13.229.103",
-    "162.13.229.104",
-  ],
+    "162.13.229.104"
+  ]
 };
 
 export const documentTypeList: DocumentTypeList = [
   {
     type: DocumentVerificationType.CC,
-    name: "Credit card",
+    name: "Credit card"
   },
   {
     type: DocumentVerificationType.IC,
-    name: "Insurance card",
+    name: "Insurance card"
   },
   {
     type: DocumentVerificationType.CAAP,
-    name: "Cash advance application",
+    name: "Cash advance application"
   },
   {
     type: DocumentVerificationType.CRC,
-    name: "Corporate resolution certificate",
+    name: "Corporate resolution certificate"
   },
   {
     type: DocumentVerificationType.CCS,
-    name: "Credit card statement",
+    name: "Credit card statement"
   },
   {
     type: DocumentVerificationType.LAG,
-    name: "Lease agreement",
+    name: "Lease agreement"
   },
   {
     type: DocumentVerificationType.LOAP,
-    name: "Loan application",
+    name: "Loan application"
   },
   {
     type: DocumentVerificationType.MOAP,
-    name: "Mortgage application",
+    name: "Mortgage application"
   },
   {
     type: DocumentVerificationType.TR,
-    name: "Tax return",
+    name: "Tax return"
   },
   {
     type: DocumentVerificationType.VT,
-    name: "Vehicle title",
+    name: "Vehicle title"
   },
   {
     type: DocumentVerificationType.VC,
-    name: "Voided check",
+    name: "Voided check"
   },
   {
     type: DocumentVerificationType.STUC,
-    name: "Student card",
+    name: "Student card"
   },
   {
     type: DocumentVerificationType.HCC,
-    name: "Health care card",
+    name: "Health care card"
   },
   {
     type: DocumentVerificationType.CB,
-    name: "Council bill",
+    name: "Council bill"
   },
   {
     type: DocumentVerificationType.SENC,
-    name: "Seniors card",
+    name: "Seniors card"
   },
   {
     type: DocumentVerificationType.MEDC,
-    name: "Medicare card",
+    name: "Medicare card"
   },
   {
     type: DocumentVerificationType.BC,
-    name: "Birth certificate",
+    name: "Birth certificate"
   },
   {
     type: DocumentVerificationType.WWCC,
-    name: "Working with children check",
+    name: "Working with children check"
   },
   {
     type: DocumentVerificationType.SS,
-    name: "Superannuation statement",
+    name: "Superannuation statement"
   },
   {
     type: DocumentVerificationType.TAC,
-    name: "Trade association card",
+    name: "Trade association card"
   },
   {
     type: DocumentVerificationType.SEL,
-    name: "School enrolment letter",
+    name: "School enrolment letter"
   },
   {
     type: DocumentVerificationType.PB,
-    name: "Phone bill",
+    name: "Phone bill"
   },
   {
     type: DocumentVerificationType.USSS,
-    name: "US social security card",
+    name: "US social security card"
   },
   {
     type: DocumentVerificationType.BS,
-    name: "Bank statement",
+    name: "Bank statement"
   },
   {
     type: DocumentVerificationType.UB,
-    name: "Utility bill",
-  },
+    name: "Utility bill"
+  }
 ];
 
 export const countries: Country[] = [
@@ -1299,1744 +1312,1744 @@ export const countries: Country[] = [
     countryCode: CountryCode.AFG,
     region: "Asia",
     subRegion: "Southern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Åland Islands",
     countryCode: CountryCode.ALA,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Albania",
     countryCode: CountryCode.ALB,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Algeria",
     countryCode: CountryCode.DZA,
     region: "Africa",
     subRegion: "Northern Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "American Samoa",
     countryCode: CountryCode.ASM,
     region: "Oceania",
     subRegion: "Polynesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Andorra",
     countryCode: CountryCode.AND,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Angola",
     countryCode: CountryCode.AGO,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Anguilla",
     countryCode: CountryCode.AIA,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Antarctica",
     countryCode: CountryCode.ATA,
     region: "",
     subRegion: "",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Antigua and Barbuda",
     countryCode: CountryCode.ATG,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Argentina",
     countryCode: CountryCode.ARG,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Armenia",
     countryCode: CountryCode.ARM,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Aruba",
     countryCode: CountryCode.ABW,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Australia",
     countryCode: CountryCode.AUS,
     region: "Oceania",
     subRegion: "Australia and New Zealand",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Austria",
     countryCode: CountryCode.AUT,
     region: "Europe",
     subRegion: "Western Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Azerbaijan",
     countryCode: CountryCode.AZE,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Bahamas",
     countryCode: CountryCode.BHS,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Bahrain",
     countryCode: CountryCode.BHR,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Bangladesh",
     countryCode: CountryCode.BGD,
     region: "Asia",
     subRegion: "Southern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Barbados",
     countryCode: CountryCode.BRB,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Belarus",
     countryCode: CountryCode.BLR,
     region: "Europe",
     subRegion: "Eastern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Belgium",
     countryCode: CountryCode.BEL,
     region: "Europe",
     subRegion: "Western Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Belize",
     countryCode: CountryCode.BLZ,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Benin",
     countryCode: CountryCode.BEN,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Bermuda",
     countryCode: CountryCode.BMU,
     region: "Americas",
     subRegion: "Northern America",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Bhutan",
     countryCode: CountryCode.BTN,
     region: "Asia",
     subRegion: "Southern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Bolivia (Plurinational State of)",
     countryCode: CountryCode.BOL,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Bonaire, Sint Eustatius and Saba",
     countryCode: CountryCode.BES,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Bosnia and Herzegovina",
     countryCode: CountryCode.BIH,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Botswana",
     countryCode: CountryCode.BWA,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Bouvet Island",
     countryCode: CountryCode.BVT,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Brazil",
     countryCode: CountryCode.BRA,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.pt_BR,
+    locale: Locale.pt_BR
   },
   {
     name: "British Indian Ocean Territory",
     countryCode: CountryCode.IOT,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Brunei Darussalam",
     countryCode: CountryCode.BRN,
     region: "Asia",
     subRegion: "South-eastern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Bulgaria",
     countryCode: CountryCode.BGR,
     region: "Europe",
     subRegion: "Eastern Europe",
-    locale: Locale.bg,
+    locale: Locale.bg
   },
   {
     name: "Burkina Faso",
     countryCode: CountryCode.BFA,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Burundi",
     countryCode: CountryCode.BDI,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Cabo Verde",
     countryCode: CountryCode.CPV,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Cambodia",
     countryCode: CountryCode.KHM,
     region: "Asia",
     subRegion: "South-eastern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Cameroon",
     countryCode: CountryCode.CMR,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Canada",
     countryCode: CountryCode.CAN,
     region: "Americas",
     subRegion: "Northern America",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Cayman Islands",
     countryCode: CountryCode.CYM,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Central African Republic",
     countryCode: CountryCode.CAF,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Chad",
     countryCode: CountryCode.TCD,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Chile",
     countryCode: CountryCode.CHL,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "China",
     countryCode: CountryCode.CHN,
     region: "Asia",
     subRegion: "Eastern Asia",
-    locale: Locale.zh_HK,
+    locale: Locale.zh_HK
   },
   {
     name: "Christmas Island",
     countryCode: CountryCode.CXR,
     region: "Oceania",
     subRegion: "Australia and New Zealand",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Cocos (Keeling) Islands",
     countryCode: CountryCode.CCK,
     region: "Oceania",
     subRegion: "Australia and New Zealand",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Colombia",
     countryCode: CountryCode.COL,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Comoros",
     countryCode: CountryCode.COM,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Congo",
     countryCode: CountryCode.COG,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Congo (Democratic Republic of the)",
     countryCode: CountryCode.COD,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Cook Islands",
     countryCode: CountryCode.COK,
     region: "Oceania",
     subRegion: "Polynesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Costa Rica",
     countryCode: CountryCode.CRI,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Côte d'Ivoire",
     countryCode: CountryCode.CIV,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Croatia",
     countryCode: CountryCode.HRV,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Cuba",
     countryCode: CountryCode.CUB,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Curaçao",
     countryCode: CountryCode.CUW,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Cyprus",
     countryCode: CountryCode.CYP,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Czechia",
     countryCode: CountryCode.CZE,
     region: "Europe",
     subRegion: "Eastern Europe",
-    locale: Locale.cs,
+    locale: Locale.cs
   },
   {
     name: "Denmark",
     countryCode: CountryCode.DNK,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.da,
+    locale: Locale.da
   },
   {
     name: "Djibouti",
     countryCode: CountryCode.DJI,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Dominica",
     countryCode: CountryCode.DMA,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Dominican Republic",
     countryCode: CountryCode.DOM,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Ecuador",
     countryCode: CountryCode.ECU,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Egypt",
     countryCode: CountryCode.EGY,
     region: "Africa",
     subRegion: "Northern Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "El Salvador",
     countryCode: CountryCode.SLV,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Equatorial Guinea",
     countryCode: CountryCode.GNQ,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Eritrea",
     countryCode: CountryCode.ERI,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Estonia",
     countryCode: CountryCode.EST,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.et,
+    locale: Locale.et
   },
   {
     name: "Eswatini",
     countryCode: CountryCode.SWZ,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Ethiopia",
     countryCode: CountryCode.ETH,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Falkland Islands (Malvinas)",
     countryCode: CountryCode.FLK,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Faroe Islands",
     countryCode: CountryCode.FRO,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Fiji",
     countryCode: CountryCode.FJI,
     region: "Oceania",
     subRegion: "Melanesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Finland",
     countryCode: CountryCode.FIN,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.fi,
+    locale: Locale.fi
   },
   {
     name: "France",
     countryCode: CountryCode.FRA,
     region: "Europe",
     subRegion: "Western Europe",
-    locale: Locale.fr,
+    locale: Locale.fr
   },
   {
     name: "French Guiana",
     countryCode: CountryCode.GUF,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "French Polynesia",
     countryCode: CountryCode.PYF,
     region: "Oceania",
     subRegion: "Polynesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "French Southern Territories",
     countryCode: CountryCode.ATF,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Gabon",
     countryCode: CountryCode.GAB,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Gambia",
     countryCode: CountryCode.GMB,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Georgia",
     countryCode: CountryCode.GEO,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Germany",
     countryCode: CountryCode.DEU,
     region: "Europe",
     subRegion: "Western Europe",
-    locale: Locale.de,
+    locale: Locale.de
   },
   {
     name: "Ghana",
     countryCode: CountryCode.GHA,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Gibraltar",
     countryCode: CountryCode.GIB,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Greece",
     countryCode: CountryCode.GRC,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.el,
+    locale: Locale.el
   },
   {
     name: "Greenland",
     countryCode: CountryCode.GRL,
     region: "Americas",
     subRegion: "Northern America",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Grenada",
     countryCode: CountryCode.GRD,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Guadeloupe",
     countryCode: CountryCode.GLP,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Guam",
     countryCode: CountryCode.GUM,
     region: "Oceania",
     subRegion: "Micronesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Guatemala",
     countryCode: CountryCode.GTM,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Guernsey",
     countryCode: CountryCode.GGY,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Guinea",
     countryCode: CountryCode.GIN,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Guinea-Bissau",
     countryCode: CountryCode.GNB,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Guyana",
     countryCode: CountryCode.GUY,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Haiti",
     countryCode: CountryCode.HTI,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Heard Island and McDonald Islands",
     countryCode: CountryCode.HMD,
     region: "Oceania",
     subRegion: "Australia and New Zealand",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Holy See",
     countryCode: CountryCode.VAT,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Honduras",
     countryCode: CountryCode.HND,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Hong Kong",
     countryCode: CountryCode.HKG,
     region: "Asia",
     subRegion: "Eastern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Hungary",
     countryCode: CountryCode.HUN,
     region: "Europe",
     subRegion: "Eastern Europe",
-    locale: Locale.hu,
+    locale: Locale.hu
   },
   {
     name: "Iceland",
     countryCode: CountryCode.ISL,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "India",
     countryCode: CountryCode.IND,
     region: "Asia",
     subRegion: "Southern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Indonesia",
     countryCode: CountryCode.IDN,
     region: "Asia",
     subRegion: "South-eastern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Iran (Islamic Republic of)",
     countryCode: CountryCode.IRN,
     region: "Asia",
     subRegion: "Southern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Iraq",
     countryCode: CountryCode.IRQ,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Ireland",
     countryCode: CountryCode.IRL,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Isle of Man",
     countryCode: CountryCode.IMN,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Israel",
     countryCode: CountryCode.ISR,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Italy",
     countryCode: CountryCode.ITA,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.it,
+    locale: Locale.it
   },
   {
     name: "Jamaica",
     countryCode: CountryCode.JAM,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Japan",
     countryCode: CountryCode.JPN,
     region: "Asia",
     subRegion: "Eastern Asia",
-    locale: Locale.ja,
+    locale: Locale.ja
   },
   {
     name: "Jersey",
     countryCode: CountryCode.JEY,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Jordan",
     countryCode: CountryCode.JOR,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Kazakhstan",
     countryCode: CountryCode.KAZ,
     region: "Asia",
     subRegion: "Central Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Kenya",
     countryCode: CountryCode.KEN,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Kiribati",
     countryCode: CountryCode.KIR,
     region: "Oceania",
     subRegion: "Micronesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Korea (Democratic People's Republic of)",
     countryCode: CountryCode.PRK,
     region: "Asia",
     subRegion: "Eastern Asia",
-    locale: Locale.ko,
+    locale: Locale.ko
   },
   {
     name: "Korea (Republic of)",
     countryCode: CountryCode.KOR,
     region: "Asia",
     subRegion: "Eastern Asia",
-    locale: Locale.ko,
+    locale: Locale.ko
   },
   {
     name: "Kuwait",
     countryCode: CountryCode.KWT,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Kyrgyzstan",
     countryCode: CountryCode.KGZ,
     region: "Asia",
     subRegion: "Central Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Lao People's Democratic Republic",
     countryCode: CountryCode.LAO,
     region: "Asia",
     subRegion: "South-eastern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Latvia",
     countryCode: CountryCode.LVA,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Lebanon",
     countryCode: CountryCode.LBN,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Lesotho",
     countryCode: CountryCode.LSO,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Liberia",
     countryCode: CountryCode.LBR,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Libya",
     countryCode: CountryCode.LBY,
     region: "Africa",
     subRegion: "Northern Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Liechtenstein",
     countryCode: CountryCode.LIE,
     region: "Europe",
     subRegion: "Western Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Lithuania",
     countryCode: CountryCode.LTU,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.lt,
+    locale: Locale.lt
   },
   {
     name: "Luxembourg",
     countryCode: CountryCode.LUX,
     region: "Europe",
     subRegion: "Western Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Macao",
     countryCode: CountryCode.MAC,
     region: "Asia",
     subRegion: "Eastern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Macedonia (the former Yugoslav Republic of)",
     countryCode: CountryCode.MKD,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Madagascar",
     countryCode: CountryCode.MDG,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Malawi",
     countryCode: CountryCode.MWI,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Malaysia",
     countryCode: CountryCode.MYS,
     region: "Asia",
     subRegion: "South-eastern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Maldives",
     countryCode: CountryCode.MDV,
     region: "Asia",
     subRegion: "Southern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Mali",
     countryCode: CountryCode.MLI,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Malta",
     countryCode: CountryCode.MLT,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Marshall Islands",
     countryCode: CountryCode.MHL,
     region: "Oceania",
     subRegion: "Micronesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Martinique",
     countryCode: CountryCode.MTQ,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Mauritania",
     countryCode: CountryCode.MRT,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Mauritius",
     countryCode: CountryCode.MUS,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Mayotte",
     countryCode: CountryCode.MYT,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Mexico",
     countryCode: CountryCode.MEX,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.es_MX,
+    locale: Locale.es_MX
   },
   {
     name: "Micronesia (Federated States of)",
     countryCode: CountryCode.FSM,
     region: "Oceania",
     subRegion: "Micronesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Moldova (Republic of)",
     countryCode: CountryCode.MDA,
     region: "Europe",
     subRegion: "Eastern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Monaco",
     countryCode: CountryCode.MCO,
     region: "Europe",
     subRegion: "Western Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Mongolia",
     countryCode: CountryCode.MNG,
     region: "Asia",
     subRegion: "Eastern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Montenegro",
     countryCode: CountryCode.MNE,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Montserrat",
     countryCode: CountryCode.MSR,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Morocco",
     countryCode: CountryCode.MAR,
     region: "Africa",
     subRegion: "Northern Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Mozambique",
     countryCode: CountryCode.MOZ,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Myanmar",
     countryCode: CountryCode.MMR,
     region: "Asia",
     subRegion: "South-eastern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Namibia",
     countryCode: CountryCode.NAM,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Nauru",
     countryCode: CountryCode.NRU,
     region: "Oceania",
     subRegion: "Micronesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Nepal",
     countryCode: CountryCode.NPL,
     region: "Asia",
     subRegion: "Southern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Netherlands",
     countryCode: CountryCode.NLD,
     region: "Europe",
     subRegion: "Western Europe",
-    locale: Locale.nl,
+    locale: Locale.nl
   },
   {
     name: "New Caledonia",
     countryCode: CountryCode.NCL,
     region: "Oceania",
     subRegion: "Melanesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "New Zealand",
     countryCode: CountryCode.NZL,
     region: "Oceania",
     subRegion: "Australia and New Zealand",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Nicaragua",
     countryCode: CountryCode.NIC,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Niger",
     countryCode: CountryCode.NER,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Nigeria",
     countryCode: CountryCode.NGA,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Niue",
     countryCode: CountryCode.NIU,
     region: "Oceania",
     subRegion: "Polynesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Norfolk Island",
     countryCode: CountryCode.NFK,
     region: "Oceania",
     subRegion: "Australia and New Zealand",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Northern Mariana Islands",
     countryCode: CountryCode.MNP,
     region: "Oceania",
     subRegion: "Micronesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Norway",
     countryCode: CountryCode.NOR,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.no,
+    locale: Locale.no
   },
   {
     name: "Oman",
     countryCode: CountryCode.OMN,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Pakistan",
     countryCode: CountryCode.PAK,
     region: "Asia",
     subRegion: "Southern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Palau",
     countryCode: CountryCode.PLW,
     region: "Oceania",
     subRegion: "Micronesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Palestine, State of",
     countryCode: CountryCode.PSE,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Panama",
     countryCode: CountryCode.PAN,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Papua New Guinea",
     countryCode: CountryCode.PNG,
     region: "Oceania",
     subRegion: "Melanesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Paraguay",
     countryCode: CountryCode.PRY,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Peru",
     countryCode: CountryCode.PER,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Philippines",
     countryCode: CountryCode.PHL,
     region: "Asia",
     subRegion: "South-eastern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Pitcairn",
     countryCode: CountryCode.PCN,
     region: "Oceania",
     subRegion: "Polynesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Poland",
     countryCode: CountryCode.POL,
     region: "Europe",
     subRegion: "Eastern Europe",
-    locale: Locale.pl,
+    locale: Locale.pl
   },
   {
     name: "Portugal",
     countryCode: CountryCode.PRT,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.pt,
+    locale: Locale.pt
   },
   {
     name: "Puerto Rico",
     countryCode: CountryCode.PRI,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Qatar",
     countryCode: CountryCode.QAT,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Réunion",
     countryCode: CountryCode.REU,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Romania",
     countryCode: CountryCode.ROU,
     region: "Europe",
     subRegion: "Eastern Europe",
-    locale: Locale.ro,
+    locale: Locale.ro
   },
   {
     name: "Russian Federation",
     countryCode: CountryCode.RUS,
     region: "Europe",
     subRegion: "Eastern Europe",
-    locale: Locale.ru,
+    locale: Locale.ru
   },
   {
     name: "Rwanda",
     countryCode: CountryCode.RWA,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Saint Barthélemy",
     countryCode: CountryCode.BLM,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Saint Helena, Ascension and Tristan da Cunha",
     countryCode: CountryCode.SHN,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Saint Kitts and Nevis",
     countryCode: CountryCode.KNA,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Saint Lucia",
     countryCode: CountryCode.LCA,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Saint Martin (French part)",
     countryCode: CountryCode.MAF,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Saint Pierre and Miquelon",
     countryCode: CountryCode.SPM,
     region: "Americas",
     subRegion: "Northern America",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Saint Vincent and the Grenadines",
     countryCode: CountryCode.VCT,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Samoa",
     countryCode: CountryCode.WSM,
     region: "Oceania",
     subRegion: "Polynesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "San Marino",
     countryCode: CountryCode.SMR,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Sao Tome and Principe",
     countryCode: CountryCode.STP,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Saudi Arabia",
     countryCode: CountryCode.SAU,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Senegal",
     countryCode: CountryCode.SEN,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Serbia",
     countryCode: CountryCode.SRB,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Seychelles",
     countryCode: CountryCode.SYC,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Sierra Leone",
     countryCode: CountryCode.SLE,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Singapore",
     countryCode: CountryCode.SGP,
     region: "Asia",
     subRegion: "South-eastern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Sint Maarten (Dutch part)",
     countryCode: CountryCode.SXM,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Slovakia",
     countryCode: CountryCode.SVK,
     region: "Europe",
     subRegion: "Eastern Europe",
-    locale: Locale.sk,
+    locale: Locale.sk
   },
   {
     name: "Slovenia",
     countryCode: CountryCode.SVN,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Solomon Islands",
     countryCode: CountryCode.SLB,
     region: "Oceania",
     subRegion: "Melanesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Somalia",
     countryCode: CountryCode.SOM,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "South Africa",
     countryCode: CountryCode.ZAF,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "South Georgia and the South Sandwich Islands",
     countryCode: CountryCode.SGS,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "South Sudan",
     countryCode: CountryCode.SSD,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Spain",
     countryCode: CountryCode.ESP,
     region: "Europe",
     subRegion: "Southern Europe",
-    locale: Locale.es,
+    locale: Locale.es
   },
   {
     name: "Sri Lanka",
     countryCode: CountryCode.LKA,
     region: "Asia",
     subRegion: "Southern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Sudan",
     countryCode: CountryCode.SDN,
     region: "Africa",
     subRegion: "Northern Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Suriname",
     countryCode: CountryCode.SUR,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Svalbard and Jan Mayen",
     countryCode: CountryCode.SJM,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Sweden",
     countryCode: CountryCode.SWE,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.sv,
+    locale: Locale.sv
   },
   {
     name: "Switzerland",
     countryCode: CountryCode.CHE,
     region: "Europe",
     subRegion: "Western Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Syrian Arab Republic",
     countryCode: CountryCode.SYR,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Taiwan, Province of China",
     countryCode: CountryCode.TWN,
     region: "Asia",
     subRegion: "Eastern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Tajikistan",
     countryCode: CountryCode.TJK,
     region: "Asia",
     subRegion: "Central Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Tanzania, United Republic of",
     countryCode: CountryCode.TZA,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Thailand",
     countryCode: CountryCode.THA,
     region: "Asia",
     subRegion: "South-eastern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Timor-Leste",
     countryCode: CountryCode.TLS,
     region: "Asia",
     subRegion: "South-eastern Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Togo",
     countryCode: CountryCode.TGO,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Tokelau",
     countryCode: CountryCode.TKL,
     region: "Oceania",
     subRegion: "Polynesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Tonga",
     countryCode: CountryCode.TON,
     region: "Oceania",
     subRegion: "Polynesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Trinidad and Tobago",
     countryCode: CountryCode.TTO,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Tunisia",
     countryCode: CountryCode.TUN,
     region: "Africa",
     subRegion: "Northern Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Turkey",
     countryCode: CountryCode.TUR,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.tr,
+    locale: Locale.tr
   },
   {
     name: "Turkmenistan",
     countryCode: CountryCode.TKM,
     region: "Asia",
     subRegion: "Central Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Turks and Caicos Islands",
     countryCode: CountryCode.TCA,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Tuvalu",
     countryCode: CountryCode.TUV,
     region: "Oceania",
     subRegion: "Polynesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Uganda",
     countryCode: CountryCode.UGA,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Ukraine",
     countryCode: CountryCode.UKR,
     region: "Europe",
     subRegion: "Eastern Europe",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "United Arab Emirates",
     countryCode: CountryCode.ARE,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "United Kingdom of Great Britain and Northern Ireland",
     countryCode: CountryCode.GBR,
     region: "Europe",
     subRegion: "Northern Europe",
-    locale: Locale.en_GB,
+    locale: Locale.en_GB
   },
   {
     name: "United States of America",
     countryCode: CountryCode.USA,
     region: "Americas",
     subRegion: "Northern America",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "United States Minor Outlying Islands",
     countryCode: CountryCode.UMI,
     region: "Oceania",
     subRegion: "Micronesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Uruguay",
     countryCode: CountryCode.URY,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Uzbekistan",
     countryCode: CountryCode.UZB,
     region: "Asia",
     subRegion: "Central Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Vanuatu",
     countryCode: CountryCode.VUT,
     region: "Oceania",
     subRegion: "Melanesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Venezuela (Bolivarian Republic of)",
     countryCode: CountryCode.VEN,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Viet Nam",
     countryCode: CountryCode.VNM,
     region: "Asia",
     subRegion: "South-eastern Asia",
-    locale: Locale.vl,
+    locale: Locale.vl
   },
   {
     name: "Virgin Islands (British)",
     countryCode: CountryCode.VGB,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Virgin Islands (U.S.)",
     countryCode: CountryCode.VIR,
     region: "Americas",
     subRegion: "Latin America and the Caribbean",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Wallis and Futuna",
     countryCode: CountryCode.WLF,
     region: "Oceania",
     subRegion: "Polynesia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Western Sahara",
     countryCode: CountryCode.ESH,
     region: "Africa",
     subRegion: "Northern Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Yemen",
     countryCode: CountryCode.YEM,
     region: "Asia",
     subRegion: "Western Asia",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Zambia",
     countryCode: CountryCode.ZMB,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
+    locale: Locale.en
   },
   {
     name: "Zimbabwe",
     countryCode: CountryCode.ZWE,
     region: "Africa",
     subRegion: "Sub-Saharan Africa",
-    locale: Locale.en,
-  },
+    locale: Locale.en
+  }
 ];
 
 /**
@@ -3063,7 +3076,7 @@ export default class Jumio {
       handleIdentityVerification: async _result => {},
       handleDocumentVerification: async _result => {},
       log: dummyLogger,
-      ...config,
+      ...config
     };
 
     // keep a shorter reference to the logger
@@ -3077,11 +3090,11 @@ export default class Jumio {
       baseURL: this.config.identityApiBaseUrl,
       auth: {
         username: this.config.apiToken,
-        password: this.config.apiSecret,
+        password: this.config.apiSecret
       },
       headers: {
-        "User-Agent": userAgent,
-      },
+        "User-Agent": userAgent
+      }
     });
 
     // configure axios for making API requests to the document verification api
@@ -3089,11 +3102,11 @@ export default class Jumio {
       baseURL: this.config.documentApiBaseUrl,
       auth: {
         username: this.config.apiToken,
-        password: this.config.apiSecret,
+        password: this.config.apiSecret
       },
       headers: {
-        "User-Agent": userAgent,
-      },
+        "User-Agent": userAgent
+      }
     });
 
     // log initialized
@@ -3103,9 +3116,9 @@ export default class Jumio {
         documentApiBaseUrl: this.config.documentApiBaseUrl,
         apiToken: this.config.apiToken,
         apiSecret: new Array(this.config.apiSecret.length + 1).join("x"),
-        userAgent,
+        userAgent
       },
-      "initialized",
+      "initialized"
     );
   }
 
@@ -3116,7 +3129,9 @@ export default class Jumio {
    */
   static isIdentityConsideredVerified(result: IdentityVerificationResult) {
     // verification status must be approved-verified
-    if (result.verificationStatus !== IdentityVerificationStatus.APPROVED_VERIFIED) {
+    if (
+      result.verificationStatus !== IdentityVerificationStatus.APPROVED_VERIFIED
+    ) {
       return false;
     }
 
@@ -3140,12 +3155,16 @@ export default class Jumio {
    */
   static isDocumentConsideredVerified(result: DocumentVerificationResult) {
     // transaction status must be done
-    if (result.transactionStatus !== DocumentVerificationTransactionStatus.DONE) {
+    if (
+      result.transactionStatus !== DocumentVerificationTransactionStatus.DONE
+    ) {
       return false;
     }
 
     // document info must be extracted
-    if (result.documentStatus !== DocumentVerificationDocumentStatus.EXTRACTED) {
+    if (
+      result.documentStatus !== DocumentVerificationDocumentStatus.EXTRACTED
+    ) {
       return false;
     }
 
@@ -3172,13 +3191,17 @@ export default class Jumio {
    *
    * @param document Document info
    */
-  private static extractDocumentName(document: DocumentVerificationDocumentInfo): string | undefined {
+  private static extractDocumentName(
+    document: DocumentVerificationDocumentInfo
+  ): string | undefined {
     if (!document.extractedData) {
       return undefined;
     }
 
     if (document.extractedData.firstName && document.extractedData.lastName) {
-      return `${document.extractedData.firstName} ${document.extractedData.lastName}`;
+      return `${document.extractedData.firstName} ${
+        document.extractedData.lastName
+      }`;
     }
 
     return document.extractedData.name;
@@ -3202,7 +3225,7 @@ export default class Jumio {
         address.stateCode,
         address.zip,
         address.zipExtension,
-        address.country,
+        address.country
       ];
     } else if (Jumio.isEuAddress(address)) {
       tokens = [
@@ -3212,7 +3235,7 @@ export default class Jumio {
         address.city,
         address.province,
         address.country,
-        address.postalCode,
+        address.postalCode
       ];
     } else if (Jumio.isRawAddress(address)) {
       tokens = [
@@ -3223,7 +3246,7 @@ export default class Jumio {
         address.line5,
         address.city,
         address.country,
-        address.postalCode,
+        address.postalCode
       ];
     }
 
@@ -3238,16 +3261,18 @@ export default class Jumio {
    */
   private static transformRawIdentityResult(
     info: RawIdentityVerificationResult,
-    metadata: VerificationMetadata,
+    metadata: VerificationMetadata
   ): IdentityVerificationResult {
     const result: IdentityVerificationResult = {
       ...info,
       metadata,
       transactionDate: new Date(info.transactionDate),
-      callbackDate: new Date(info.callbackDate),
+      callbackDate: new Date(info.callbackDate)
     };
 
-    if (result.verificationStatus === IdentityVerificationStatus.APPROVED_VERIFIED) {
+    if (
+      result.verificationStatus === IdentityVerificationStatus.APPROVED_VERIFIED
+    ) {
       result.idDob = new Date(info.idDob);
       result.idExpiry = new Date(info.idExpiry);
       result.identityVerification = JSON.parse(info.identityVerification);
@@ -3261,7 +3286,8 @@ export default class Jumio {
       }
     } else if (
       result.verificationStatus === IdentityVerificationStatus.DENIED_FRAUD ||
-      result.verificationStatus === IdentityVerificationStatus.ERROR_NOT_READABLE_ID
+      result.verificationStatus ===
+        IdentityVerificationStatus.ERROR_NOT_READABLE_ID
     ) {
       result.rejectReason = JSON.parse(info.rejectReason);
     }
@@ -3276,9 +3302,11 @@ export default class Jumio {
    */
   private static transformRawDocumentResult(
     info: RawDocumentVerificationResult,
-    metadata: VerificationMetadata,
+    metadata: VerificationMetadata
   ): DocumentVerificationResult {
-    const transaction: DocumentVerificationTransactionInfo = JSON.parse(info.transaction);
+    const transaction: DocumentVerificationTransactionInfo = JSON.parse(
+      info.transaction
+    );
     const document: DocumentVerificationDocumentInfo | undefined = info.document
       ? JSON.parse(info.document)
       : undefined;
@@ -3287,7 +3315,9 @@ export default class Jumio {
       metadata,
       scanReference: info.scanReference,
       transactionStatus: transaction.status,
-      documentStatus: document ? document.status : DocumentVerificationDocumentStatus.NOT_AVAILABLE,
+      documentStatus: document
+        ? document.status
+        : DocumentVerificationDocumentStatus.NOT_AVAILABLE,
       name: document ? Jumio.extractDocumentName(document) : undefined,
       address:
         document && document.extractedData && document.extractedData.address
@@ -3301,7 +3331,7 @@ export default class Jumio {
       originalDocument: document ? document.originalDocument : undefined,
       clientIp: transaction.clientIp,
       transactionDate: new Date(transaction.date),
-      callbackDate: new Date(info.timestamp),
+      callbackDate: new Date(info.timestamp)
     };
 
     return result;
@@ -3344,19 +3374,34 @@ export default class Jumio {
     const router = Router();
 
     // handles identity verification callback
-    router.post("/identity-verification-callback", this.handleIdentityVerificationCallback.bind(this));
+    router.post(
+      "/identity-verification-callback",
+      this.handleIdentityVerificationCallback.bind(this)
+    );
 
     // handles document verification callback
-    router.post("/document-verification-callback", this.handleDocumentVerificationCallback.bind(this));
+    router.post(
+      "/document-verification-callback",
+      this.handleDocumentVerificationCallback.bind(this)
+    );
 
     // handles identity verification image request, proxies the verification image using authentication
-    router.get("/identity-verification-image/:id/:type", this.handleIdentityVerificationImage.bind(this));
+    router.get(
+      "/identity-verification-image/:id/:type",
+      this.handleIdentityVerificationImage.bind(this)
+    );
 
     // handles document verification image request, proxies the verification image using authentication
-    router.get("/document-verification-image/:id/:index", this.handleDocumentVerificationImage.bind(this));
+    router.get(
+      "/document-verification-image/:id/:index",
+      this.handleDocumentVerificationImage.bind(this)
+    );
 
     // handles document verification original document request, proxies the document using authentication
-    router.get("/document-verification-original/:id", this.handleDocumentVerificationOriginal.bind(this));
+    router.get(
+      "/document-verification-original/:id",
+      this.handleDocumentVerificationOriginal.bind(this)
+    );
 
     return router;
   }
@@ -3367,16 +3412,18 @@ export default class Jumio {
    * @param parameters Identity verification initiation parameters
    */
   async initiateIdentityVerification(
-    parameters: InitiateIdentityVerificationParameters,
+    parameters: InitiateIdentityVerificationParameters
   ): Promise<InitiateIdentityVerificationResponse> {
-    const response = await this.identityApi.post<InitiateIdentityVerificationResponse>("/initiate", parameters);
+    const response = await this.identityApi.post<
+      InitiateIdentityVerificationResponse
+    >("/initiate", parameters);
 
     this.log.info(
       {
         parameters,
-        response: response.data,
+        response: response.data
       },
-      "initiated identity verification",
+      "initiated identity verification"
     );
 
     return response.data;
@@ -3388,16 +3435,18 @@ export default class Jumio {
    * @param parameters Document verification initiation parameters
    */
   async initiateDocumentVerification(
-    parameters: InitiateDocumentVerificationParameters,
+    parameters: InitiateDocumentVerificationParameters
   ): Promise<InitiateDocumentVerificationResponse> {
-    const response = await this.documentApi.post<InitiateDocumentVerificationResponse>("/acquisitions", parameters);
+    const response = await this.documentApi.post<
+      InitiateDocumentVerificationResponse
+    >("/acquisitions", parameters);
 
     this.log.info(
       {
         parameters,
-        response: response.data,
+        response: response.data
       },
-      "initiated document verification",
+      "initiated document verification"
     );
 
     return response.data;
@@ -3412,7 +3461,11 @@ export default class Jumio {
    * @param response Express response
    * @param _next Express next function
    */
-  private async handleIdentityVerificationCallback(request: Request, response: Response, _next: NextFunction) {
+  private async handleIdentityVerificationCallback(
+    request: Request,
+    response: Response,
+    _next: NextFunction
+  ) {
     // validate callback ip
     const callbackIp = request.ip;
     const isValidCallbackIp = this.isValidCallbackIp(callbackIp);
@@ -3420,11 +3473,14 @@ export default class Jumio {
     // transform the raw result to well-formed format
     const rawResult: RawIdentityVerificationResult = request.body;
     // TODO: validate against schema?
-    const result: IdentityVerificationResult = Jumio.transformRawIdentityResult(rawResult, {
+    const result: IdentityVerificationResult = Jumio.transformRawIdentityResult(
       rawResult,
-      callbackIp,
-      isValidCallbackIp,
-    });
+      {
+        rawResult,
+        callbackIp,
+        isValidCallbackIp
+      }
+    );
 
     // log callback info
     this.log.info(
@@ -3432,16 +3488,18 @@ export default class Jumio {
         callbackIp,
         isValidCallbackIp,
         rawResult,
-        result,
+        result
       },
-      "received identity validation callback",
+      "received identity validation callback"
     );
 
     // attempt to remotely handle the callback
     try {
       await this.config.handleIdentityVerification(result);
     } catch (error) {
-      response.status(HttpStatus.INTERNAL_SERVER_ERROR).send("handling identity verification callback failed");
+      response
+        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .send("handling identity verification callback failed");
 
       return;
     }
@@ -3459,7 +3517,11 @@ export default class Jumio {
    * @param response Express response
    * @param _next Express next function
    */
-  private async handleDocumentVerificationCallback(request: Request, response: Response, _next: NextFunction) {
+  private async handleDocumentVerificationCallback(
+    request: Request,
+    response: Response,
+    _next: NextFunction
+  ) {
     // validate callback ip
     const callbackIp = request.ip;
     const isValidCallbackIp = this.isValidCallbackIp(callbackIp);
@@ -3467,11 +3529,14 @@ export default class Jumio {
     // transform the raw result to well-formed format
     const rawResult: RawDocumentVerificationResult = request.body;
     // TODO: validate against schema?
-    const verificationResult: DocumentVerificationResult = Jumio.transformRawDocumentResult(rawResult, {
+    const verificationResult: DocumentVerificationResult = Jumio.transformRawDocumentResult(
       rawResult,
-      callbackIp,
-      isValidCallbackIp,
-    });
+      {
+        rawResult,
+        callbackIp,
+        isValidCallbackIp
+      }
+    );
 
     // log callback info
     this.log.info(
@@ -3479,16 +3544,18 @@ export default class Jumio {
         callbackIp,
         isValidCallbackIp,
         rawResult,
-        verificationResult,
+        verificationResult
       },
-      "received document validation callback",
+      "received document validation callback"
     );
 
     // attempt to remotely handle the callback
     try {
       await this.config.handleDocumentVerification(verificationResult);
     } catch (error) {
-      response.status(HttpStatus.INTERNAL_SERVER_ERROR).send("handling document verification callback failed");
+      response
+        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .send("handling document verification callback failed");
 
       return;
     }
@@ -3506,7 +3573,11 @@ export default class Jumio {
    * @param response Express response
    * @param _next Express next function
    */
-  private async handleIdentityVerificationImage(request: Request, response: Response, _next: NextFunction) {
+  private async handleIdentityVerificationImage(
+    request: Request,
+    response: Response,
+    _next: NextFunction
+  ) {
     const { id, type } = request.params as IdentityImageEndpointParams;
     const apiUrl = identityRetrievalRegionApiUrlMap[this.config.region];
     const imageUrl = `${apiUrl}/${id}/${type}`;
@@ -3514,7 +3585,7 @@ export default class Jumio {
     try {
       // fetch the file
       const image = await this.identityApi.get(imageUrl, {
-        responseType: "arraybuffer",
+        responseType: "arraybuffer"
       });
 
       // send back proxied headers and data
@@ -3525,9 +3596,9 @@ export default class Jumio {
       this.log.warn(
         {
           imageUrl,
-          error,
+          error
         },
-        "identity verification image could not be found",
+        "identity verification image could not be found"
       );
 
       // TODO: send 404 image instead
@@ -3544,7 +3615,11 @@ export default class Jumio {
    * @param response Express response
    * @param _next Express next function
    */
-  private async handleDocumentVerificationImage(request: Request, response: Response, _next: NextFunction) {
+  private async handleDocumentVerificationImage(
+    request: Request,
+    response: Response,
+    _next: NextFunction
+  ) {
     const { id, index } = request.params as DocumentImageEndpointParams;
     const apiUrl = documentRetrievalRegionApiUrlMap[this.config.region];
     const imageUrl = `${apiUrl}/${id}/pages/${index}`;
@@ -3552,7 +3627,7 @@ export default class Jumio {
     try {
       // fetch the file
       const image = await this.documentApi.get(imageUrl, {
-        responseType: "arraybuffer",
+        responseType: "arraybuffer"
       });
 
       // send back proxied headers and data
@@ -3563,9 +3638,9 @@ export default class Jumio {
       this.log.warn(
         {
           imageUrl,
-          error,
+          error
         },
-        "document verification image could not be found",
+        "document verification image could not be found"
       );
 
       // TODO: send 404 image instead
@@ -3582,7 +3657,11 @@ export default class Jumio {
    * @param response Express response
    * @param _next Express next function
    */
-  private async handleDocumentVerificationOriginal(request: Request, response: Response, _next: NextFunction) {
+  private async handleDocumentVerificationOriginal(
+    request: Request,
+    response: Response,
+    _next: NextFunction
+  ) {
     const { id } = request.params as DocumentOriginalEndpointParams;
     const apiUrl = documentRetrievalRegionApiUrlMap[this.config.region];
     const documentUrl = `${apiUrl}/${id}/original`;
@@ -3590,7 +3669,7 @@ export default class Jumio {
     try {
       // fetch the file
       const document = await this.documentApi.get(documentUrl, {
-        responseType: "arraybuffer",
+        responseType: "arraybuffer"
       });
 
       // send back proxied headers and data
@@ -3601,9 +3680,9 @@ export default class Jumio {
       this.log.warn(
         {
           documentUrl,
-          error,
+          error
         },
-        "document verification original document could not be found",
+        "document verification original document could not be found"
       );
 
       response.status(404).send("not found");
@@ -3616,6 +3695,8 @@ export default class Jumio {
    * @param requestIp IP address to check
    */
   private isValidCallbackIp(requestIp: string) {
-    return this.config.callbackWhitelist.some(validIp => ip.isEqual(requestIp, validIp));
+    return this.config.callbackWhitelist.some(validIp =>
+      ip.isEqual(requestIp, validIp)
+    );
   }
 }
