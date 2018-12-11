@@ -1,6 +1,6 @@
 {
   "name": "jumio",
-  "version": "1.27.0",
+  "version": "1.27.1",
   "description": "Jumio NetVerify identity and document verification library",
   "main": "build/index.js",
   "repository": "https://github.com/stagnationlab/jumio.git",

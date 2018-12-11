@@ -22,6 +22,7 @@ This package is distributed via npm
 ```cmd
 npm install jumio
 ```
+
 ```cmd
 yarn add jumio
 ```
