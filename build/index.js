@@ -2663,8 +2663,8 @@ var Jumio = /** @class */ (function () {
     Jumio.transformRawIdentityResult = function (info, metadata) {
         var result = __assign({}, info, { metadata: metadata, transactionDate: new Date(info.transactionDate), callbackDate: new Date(info.callbackDate) });
         if (result.verificationStatus === IdentityVerificationStatus.APPROVED_VERIFIED) {
-            result.idDob = new Date(info.idDob);
-            result.idExpiry = new Date(info.idExpiry);
+            result.idDob = Jumio.parseDate(info.idDob);
+            result.idExpiry = Jumio.parseDate(info.idExpiry);
             result.identityVerification = JSON.parse(info.identityVerification);
             if (info.idAddress) {
                 result.idAddress = JSON.parse(info.idAddress);
@@ -2713,6 +2713,19 @@ var Jumio = /** @class */ (function () {
             callbackDate: new Date(info.timestamp)
         };
         return result;
+    };
+    /**
+     * Returns parsed Date.
+     *
+     * @param address Date to parse
+     */
+    Jumio.parseDate = function (date) {
+        try {
+            return new Date(date);
+        }
+        catch (e) {
+            return undefined;
+        }
     };
     /**
      * Returns whether given address is of US type.

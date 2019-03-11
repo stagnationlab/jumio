@@ -610,8 +610,8 @@ export interface VerificationResultApproved extends VerificationResultBase {
     idCountry: CountryCode;
     idFirstName: string | "N/A";
     idLastName: string | "N/A";
-    idDob: Date;
-    idExpiry: Date;
+    idDob?: Date;
+    idExpiry?: Date;
     personalNumber: string | "N/A";
     identityVerification: IdentityVerificationInfo;
     firstAttemptDate: Date;
@@ -839,6 +839,12 @@ export default class Jumio {
      * @param metadata Metadata added by the library
      */
     private static transformRawDocumentResult;
+    /**
+     * Returns parsed Date.
+     *
+     * @param address Date to parse
+     */
+    private static parseDate;
     /**
      * Returns whether given address is of US type.
      *

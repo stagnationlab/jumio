@@ -827,10 +827,10 @@ export interface VerificationResultApproved extends VerificationResultBase {
   idLastName: string | "N/A";
 
   // date of birth
-  idDob: Date;
+  idDob?: Date;
 
   // date of expiry
-  idExpiry: Date;
+  idExpiry?: Date;
 
   // personal number of the document
   personalNumber: string | "N/A";
@@ -3273,8 +3273,8 @@ export default class Jumio {
     if (
       result.verificationStatus === IdentityVerificationStatus.APPROVED_VERIFIED
     ) {
-      result.idDob = new Date(info.idDob);
-      result.idExpiry = new Date(info.idExpiry);
+      result.idDob = Jumio.parseDate(info.idDob);
+      result.idExpiry = Jumio.parseDate(info.idExpiry);
       result.identityVerification = JSON.parse(info.identityVerification);
 
       if (info.idAddress) {
@@ -3335,6 +3335,19 @@ export default class Jumio {
     };
 
     return result;
+  }
+
+  /**
+   * Returns parsed Date.
+   *
+   * @param address Date to parse
+   */
+  private static parseDate(date: any): Date | undefined {
+    try {
+      return new Date(date);
+    } catch (e) {
+      return undefined;
+    }
   }
 
   /**
