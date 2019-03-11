@@ -3343,11 +3343,7 @@ export default class Jumio {
    * @param address Date to parse
    */
   private static parseDate(date: any): Date | undefined {
-    try {
-      return new Date(date);
-    } catch (e) {
-      return undefined;
-    }
+    return date && new Date(date);
   }
 
   /**
