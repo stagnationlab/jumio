@@ -2720,12 +2720,7 @@ var Jumio = /** @class */ (function () {
      * @param address Date to parse
      */
     Jumio.parseDate = function (date) {
-        try {
-            return new Date(date);
-        }
-        catch (e) {
-            return undefined;
-        }
+        return date && new Date(date);
     };
     /**
      * Returns whether given address is of US type.
