@@ -3136,7 +3136,10 @@ export default class Jumio {
     }
 
     // selfie must match the documents
-    if (!result.identityVerification.validity) {
+    if (
+      !result.identityVerification.validity ||
+      result.identityVerification.similarity !== Similarity.MATCH
+    ) {
       return false;
     }
 
