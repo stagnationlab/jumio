@@ -561,32 +561,32 @@ var DlCategory;
 // https://github.com/Jumio/implementation-guides/blob/master/netverify/document-verification.md#supported-documents
 var DocumentVerificationType;
 (function (DocumentVerificationType) {
-    DocumentVerificationType["CC"] = "CC";
-    DocumentVerificationType["IC"] = "IC";
+    DocumentVerificationType["BC"] = "BC";
+    DocumentVerificationType["BS"] = "BS";
     DocumentVerificationType["CAAP"] = "CAAP";
-    DocumentVerificationType["CRC"] = "CRC";
+    DocumentVerificationType["CB"] = "CB";
+    DocumentVerificationType["CC"] = "CC";
     DocumentVerificationType["CCS"] = "CCS";
+    DocumentVerificationType["CRC"] = "CRC";
+    DocumentVerificationType["CUSTOM"] = "CUSTOM";
+    DocumentVerificationType["HCC"] = "HCC";
+    DocumentVerificationType["IC"] = "IC";
     DocumentVerificationType["LAG"] = "LAG";
     DocumentVerificationType["LOAP"] = "LOAP";
-    DocumentVerificationType["MOAP"] = "MOAP";
-    DocumentVerificationType["TR"] = "TR";
-    DocumentVerificationType["VT"] = "VT";
-    DocumentVerificationType["VC"] = "VC";
-    DocumentVerificationType["STUC"] = "STUC";
-    DocumentVerificationType["HCC"] = "HCC";
-    DocumentVerificationType["CB"] = "CB";
-    DocumentVerificationType["SENC"] = "SENC";
     DocumentVerificationType["MEDC"] = "MEDC";
-    DocumentVerificationType["BC"] = "BC";
-    DocumentVerificationType["WWCC"] = "WWCC";
-    DocumentVerificationType["SS"] = "SS";
-    DocumentVerificationType["TAC"] = "TAC";
-    DocumentVerificationType["SEL"] = "SEL";
+    DocumentVerificationType["MOAP"] = "MOAP";
     DocumentVerificationType["PB"] = "PB";
-    DocumentVerificationType["USSS"] = "USSS";
-    DocumentVerificationType["CUSTOM"] = "CUSTOM";
-    DocumentVerificationType["BS"] = "BS";
-    DocumentVerificationType["UB"] = "UB"; // Utility bill
+    DocumentVerificationType["SEL"] = "SEL";
+    DocumentVerificationType["SENC"] = "SENC";
+    DocumentVerificationType["SS"] = "SS";
+    DocumentVerificationType["SSC"] = "SSC";
+    DocumentVerificationType["STUC"] = "STUC";
+    DocumentVerificationType["TAC"] = "TAC";
+    DocumentVerificationType["TR"] = "TR";
+    DocumentVerificationType["UB"] = "UB";
+    DocumentVerificationType["VC"] = "VC";
+    DocumentVerificationType["VT"] = "VT";
+    DocumentVerificationType["WWCC"] = "WWCC"; // (Working with children check)
 })(DocumentVerificationType = exports.DocumentVerificationType || (exports.DocumentVerificationType = {}));
 var DocumentVerificationTransactionStatus;
 (function (DocumentVerificationTransactionStatus) {
@@ -738,8 +738,8 @@ exports.documentTypeList = [
         name: "Phone bill"
     },
     {
-        type: DocumentVerificationType.USSS,
-        name: "US social security card"
+        type: DocumentVerificationType.SSC,
+        name: "Social security card"
     },
     {
         type: DocumentVerificationType.BS,

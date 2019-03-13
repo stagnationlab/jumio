@@ -917,32 +917,32 @@ export interface DocumentOriginalEndpointParams {
 // list of supported document types
 // https://github.com/Jumio/implementation-guides/blob/master/netverify/document-verification.md#supported-documents
 export enum DocumentVerificationType {
-  "CC" = "CC", // Credit card
-  "IC" = "IC", // Insurance card
-  "CAAP" = "CAAP", // Cash advance application
-  "CRC" = "CRC", // Corporate resolution certificate
-  "CCS" = "CCS", // Credit card statement
-  "LAG" = "LAG", // Lease agreement
-  "LOAP" = "LOAP", // Loan application
-  "MOAP" = "MOAP", // Mortgage application
-  "TR" = "TR", // Tax return
-  "VT" = "VT", // Vehicle title
-  "VC" = "VC", // Voided check
-  "STUC" = "STUC", // Student card
-  "HCC" = "HCC", // Health care card
-  "CB" = "CB", // Council bill
-  "SENC" = "SENC", // Seniors card
-  "MEDC" = "MEDC", // Medicare card
-  "BC" = "BC", // Birth certificate
-  "WWCC" = "WWCC", // Working with children check
-  "SS" = "SS", // Superannuation statement
-  "TAC" = "TAC", // Trade association card
-  "SEL" = "SEL", // School enrolment letter
-  "PB" = "PB", // Phone bill
-  "USSS" = "USSS", // US social security card
-  "CUSTOM" = "CUSTOM", // DOCUMENT
-  "BS" = "BS", // Bank statement
-  "UB" = "UB" // Utility bill
+  "BC" = "BC", // (Birth certificate)
+  "BS" = "BS", // (Bank statement)
+  "CAAP" = "CAAP", // (Cash advance application)
+  "CB" = "CB", // (Council bill)
+  "CC" = "CC", // (Credit card)
+  "CCS" = "CCS", // (Credit card statement)
+  "CRC" = "CRC", // (Corporate resolution certificate)
+  "CUSTOM" = "CUSTOM", // (Custom document type - see below)
+  "HCC" = "HCC", // (Health care card)
+  "IC" = "IC", // (Insurance card)
+  "LAG" = "LAG", // (Lease agreement)
+  "LOAP" = "LOAP", // (Loan application)
+  "MEDC" = "MEDC", // (Medicare card)
+  "MOAP" = "MOAP", // (Mortgage application)
+  "PB" = "PB", // (Phone bill)
+  "SEL" = "SEL", // (School enrolment letter)
+  "SENC" = "SENC", // (Seniors card)
+  "SS" = "SS", // (Superannuation statement)
+  "SSC" = "SSC", // (Social security card)
+  "STUC" = "STUC", // (Student card)
+  "TAC" = "TAC", // (Trade association card)
+  "TR" = "TR", // (Tax return)
+  "UB" = "UB", // (Utility bill)
+  "VC" = "VC", // (Voided check)
+  "VT" = "VT", // (Vehicle title)
+  "WWCC" = "WWCC" // (Working with children check)
 }
 
 export type DocumentTypeList = {
@@ -1293,8 +1293,8 @@ export const documentTypeList: DocumentTypeList = [
     name: "Phone bill"
   },
   {
-    type: DocumentVerificationType.USSS,
-    name: "US social security card"
+    type: DocumentVerificationType.SSC,
+    name: "Social security card"
   },
   {
     type: DocumentVerificationType.BS,
