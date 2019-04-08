@@ -1,6 +1,6 @@
 {
   "name": "jumio",
-  "version": "1.27.7",
+  "version": "1.27.8",
   "description": "Jumio NetVerify identity and document verification library",
   "main": "build/index.js",
   "types": "build/index.d.ts",
