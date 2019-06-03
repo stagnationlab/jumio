@@ -541,6 +541,7 @@ var CountryCode;
     CountryCode["VIR"] = "VIR";
     CountryCode["WLF"] = "WLF";
     CountryCode["ESH"] = "ESH";
+    CountryCode["XKX"] = "XKX";
     CountryCode["YEM"] = "YEM";
     CountryCode["ZMB"] = "ZMB";
     CountryCode["ZWE"] = "ZWE"; // Zimbabwe
@@ -1600,6 +1601,13 @@ exports.countries = [
         region: "Asia",
         subRegion: "Eastern Asia",
         locale: Locale.ko
+    },
+    {
+        name: "Kosovo",
+        countryCode: CountryCode.XKX,
+        region: "Europe",
+        subRegion: "Southern Europe",
+        locale: Locale.en
     },
     {
         name: "Kuwait",

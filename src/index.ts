@@ -650,6 +650,7 @@ export enum CountryCode {
   VIR = "VIR", // Virgin Islands (U.S.)
   WLF = "WLF", // Wallis and Futuna
   ESH = "ESH", // Western Sahara
+  XKX = "XKX", // Kosovo
   YEM = "YEM", // Yemen
   ZMB = "ZMB", // Zambia
   ZWE = "ZWE" // Zimbabwe
@@ -2156,6 +2157,13 @@ export const countries: Country[] = [
     region: "Asia",
     subRegion: "Eastern Asia",
     locale: Locale.ko
+  },
+  {
+    name: "Kosovo",
+    countryCode: CountryCode.XKX,
+    region: "Europe",
+    subRegion: "Southern Europe",
+    locale: Locale.en
   },
   {
     name: "Kuwait",
